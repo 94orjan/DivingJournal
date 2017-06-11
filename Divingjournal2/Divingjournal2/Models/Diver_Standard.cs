@@ -23,9 +23,14 @@ namespace Divingjournal2.Models
 
 
         public string diver_name { get; set; }
-        public OF_Type of_type { get; set; }
-        public Direct direct { get; set; }
-        public AirType airType { get; set; }
+        // public OF_Type of_type { get; set; }
+        // public Direct direct { get; set; }
+        // public AirType airType { get; set; }
+
+        public string of_type { get; set; }
+        public string direct { get; set; }
+        public string airType { get; set; }
+
         public string nitroxType { get; set; }
         public bool repeatedAir { get; set; }
         public string N2GroupBeforeDive { get; set; }
@@ -47,7 +52,7 @@ namespace Divingjournal2.Models
         public string tableUsed_Minutes { get; set; }
         public string ascensionToFirstStop { get; set; }
         public string timeAtSafetyStop { get; set; }
-        public bool isEverythingOK { get; set; }
+        public string isEverythingOK { get; set; }
 
         public string arrived9m { get; set; }
         public string left9m { get; set; }

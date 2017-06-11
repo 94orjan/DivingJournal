@@ -224,13 +224,13 @@
 
                     <asp:TableRow ID="ChamberCheckBoxRow">
                         <asp:TableCell runat="server">
-                             <asp:CheckBox ID="isChamberClearCheckBox" OnCheckedChanged="standbyCheckBox_CheckedChanged" runat="server" Text="Kammer sjekket ut" CssClass="checkbox-inline form-control-static text-info" />
+                             <asp:CheckBox ID="isChamberClearCheckBox" runat="server" Text="Kammer sjekket ut" CssClass="checkbox-inline form-control-static text-info" />
                         </asp:TableCell>
                         <asp:TableCell runat="server">
-                             <asp:CheckBox ID="isOxygenClearCheckBox" OnCheckedChanged="standbyCheckBox_CheckedChanged" runat="server" Text="Oksygen sjekket ut" CssClass="checkbox-inline form-control-static text-info" />
+                             <asp:CheckBox ID="isOxygenClearCheckBox" runat="server" Text="Oksygen sjekket ut" CssClass="checkbox-inline form-control-static text-info" />
                         </asp:TableCell>
                         <asp:TableCell>
-                             <asp:CheckBox ID="treatmentCheckBox" OnCheckedChanged="treatmentCheckBox_CheckedChanged" AutoPostBack="true" runat="server" Text="Behandling" CssClass="checkbox-inline form-control-static text-info" />
+                             <asp:CheckBox ID="treatmentCheckBox" AutoPostBack="true" runat="server" Text="Behandling" CssClass="checkbox-inline form-control-static text-info" />
                         </asp:TableCell>
                     </asp:TableRow>
                     <asp:TableRow ID="doctorRow">

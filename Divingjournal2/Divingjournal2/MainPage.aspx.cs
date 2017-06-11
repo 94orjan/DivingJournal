@@ -19,7 +19,7 @@ namespace Divingjournal2
 
         protected void PopupSubmitButton_Click(object sender, EventArgs e)
         {
-            Debug.WriteLine(PopupTextBox.Text);
+           
         }
     }
 }
