@@ -14,7 +14,7 @@ namespace Divingjournal2
         protected void Page_Load(object sender, EventArgs e)
         {
             string s = (string)Session["timeLabel"];
-            Label2.Text = s;
+            
 
             Debug.Write("Heipådeg");
             
@@ -22,19 +22,22 @@ namespace Divingjournal2
 
         protected void NewJournalButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/new_journal.aspx");
+            Response.Redirect("/new_journal_rebuilt.aspx");
         }
 
         protected void GetJournalButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/my_journals.aspx");
-
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void SearchJournalsButton_Click(object sender, EventArgs e)
         {
 
         }
 
+        protected void NewJournalOldButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/new_journal.aspx");
+        }
     }
 }

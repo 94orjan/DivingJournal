@@ -26,6 +26,7 @@ namespace Divingjournal2
         Models.Journal j = new Models.Journal();
         Models.Journal_Pressurechamber pc = new Models.Journal_Pressurechamber();
         Models.Journal_Cache jc = new Models.Journal_Cache();
+        Models.Journal_Pressurechamber_Cache pcc = new Models.Journal_Pressurechamber_Cache();
 
         public static Models.Journal_Cache local_jc = new Models.Journal_Cache();
 
@@ -66,7 +67,7 @@ namespace Divingjournal2
                 Divingleader_studentTextBox.Text = local_jc.divingleader_student;
                 Diver_1TextBox.Text = local_jc.diver_1;
                 Diver_2TextBox.Text = local_jc.diver_2;
-                StandbyTextBox.Text = local_jc.standby;
+                StandbyTextBox.Text = local_jc.diver_3;
                 isLoaded = false;
             }
 
@@ -300,8 +301,8 @@ namespace Divingjournal2
             DivingJournalContext db = new DivingJournalContext();
 
             j.username = HttpContext.Current.Session["Username"].ToString();
-            j.subject = checkSubjectDropDownList();
-            j.transport = returnTransportCheckBoxList();
+           // j.subject = checkSubjectDropDownList();
+           // j.transport = checkTransportCheckBoxes();
             j.courseNumber = CourseNrTextBox.Text;
             j.other = OtherTextBox.Text;
             j.date = DateTextBox.Text;
@@ -337,9 +338,9 @@ namespace Divingjournal2
                 {
                     //map data fra webform til diver_standard
                     JournalID = j.Id,
-                    of_type = D1checkOf_TypeDropDownList(),
-                    direct = D1checkDirectDropDownList(),
-                    airType = D1checkAirTypeDropDownList(),
+                    //  of_type = D1checkOf_TypeDropDownList(),
+                    //  direct = D1checkDirectDropDownList(),
+                    //   airType = D1checkAirTypeDropDownList(),
                     nitroxType = D1NitroxPercentTextbox.Text,
                     repeatedAir = D1RepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = D1N2GroupBeforeDiveTextBox.Text,
@@ -363,7 +364,7 @@ namespace Divingjournal2
                     timeAtSafetyStop = D1timeAtSafetyStop.Text,
                     totalDivingTime = D1totalDivingTime.Text,
                     N2GroupAfterDive = D1N2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(D1isEverythingOKDropDownList),
+                    //   isEverythingOK = checkYesNoDropDownList(D1isEverythingOKDropDownList),
 
 
                     arrived9m = D1arrived9m.Text,
@@ -377,9 +378,9 @@ namespace Divingjournal2
                 var diver2 = new Models.Diver_Standard
                 {
                     JournalID = j.Id,
-                    of_type = D2checkOf_TypeDropDownList(),
-                    direct = D2checkDirectDropDownList(),
-                    airType = D2checkAirTypeDropDownList(),
+                    // of_type = D2checkOf_TypeDropDownList(),
+                    //  direct = D2checkDirectDropDownList(),
+                    //  airType = D2checkAirTypeDropDownList(),
                     nitroxType = D2NitroxPercentTextbox.Text,
                     repeatedAir = D2RepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = D2N2GroupBeforeDiveTextBox.Text,
@@ -403,7 +404,7 @@ namespace Divingjournal2
                     timeAtSafetyStop = D2timeAtSafetyStop.Text,
                     totalDivingTime = D2totalDivingTime.Text,
                     N2GroupAfterDive = D2N2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(D2isEverythingOKDropDownList),
+                    //   isEverythingOK = checkYesNoDropDownList(D2isEverythingOKDropDownList),
 
 
                     arrived9m = D2arrived9m.Text,
@@ -416,9 +417,9 @@ namespace Divingjournal2
                 var standby = new Models.Diver_Standard
                 {
                     JournalID = j.Id,
-                    of_type = SBcheckOf_TypeDropDownList(),
-                    direct = SBcheckDirectDropDownList(),
-                    airType = SBcheckAirTypeDropDownList(),
+                    //    of_type = SBcheckOf_TypeDropDownList(),
+                    //   direct = SBcheckDirectDropDownList(),
+                    //    airType = SBcheckAirTypeDropDownList(),
                     nitroxType = SBNitroxPercentTextbox.Text,
                     repeatedAir = SBRepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = SBN2GroupBeforeDiveTextBox.Text,
@@ -442,7 +443,7 @@ namespace Divingjournal2
                     timeAtSafetyStop = SBtimeAtSafetyStop.Text,
                     totalDivingTime = SBtotalDivingTime.Text,
                     N2GroupAfterDive = SBN2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(SBisEverythingOKDropDownList),
+                    //    isEverythingOK = checkYesNoDropDownList(SBisEverythingOKDropDownList),
 
 
                     arrived9m = SBarrived9m.Text,
@@ -460,10 +461,10 @@ namespace Divingjournal2
                 var diver1 = new Models.Diver_Compression
                 {
                     //map data fra webform til diver_standard
-                    
-                    of_type = D1checkOf_TypeDropDownList(),
-                    direct = D1checkDirectDropDownList(),
-                    airType = D1checkAirTypeDropDownList(),
+
+                    //     of_type = D1checkOf_TypeDropDownList(),
+                    //    direct = D1checkDirectDropDownList(),
+                    //    airType = D1checkAirTypeDropDownList(),
                     nitroxType = D1NitroxPercentTextbox.Text,
                     repeatedAir = D1RepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = D1N2GroupBeforeDiveTextBox.Text,
@@ -488,9 +489,9 @@ namespace Divingjournal2
                     timeAtSafetyStop = D1Comp_timeAtSafetyStop.Text,
                     totalDivingTime = D1Comp_totalDivingTime.Text,
                     N2GroupAfterDive = D1Comp_N2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(D1Comp_isEverythingOKDropDownList),
+                    //  isEverythingOK = checkYesNoDropDownList(D1Comp_isEverythingOKDropDownList),
 
-                    left18m= D1Comp_left18m.Text,
+                    left18m = D1Comp_left18m.Text,
                     left15m=D1Comp_left15m.Text,
                     left12m=D1Comp_left12m.Text,
                     time12_0m=D1Comp_time12_0m.Text,
@@ -511,10 +512,10 @@ namespace Divingjournal2
 
                 var diver2 = new Models.Diver_Compression
                 {
-                    
-                    of_type = D2checkOf_TypeDropDownList(),
-                    direct = D2checkDirectDropDownList(),
-                    airType = D2checkAirTypeDropDownList(),
+
+                    // of_type = D2checkOf_TypeDropDownList(),
+                    //    direct = D2checkDirectDropDownList(),
+                    //  airType = D2checkAirTypeDropDownList(),
                     nitroxType = D2NitroxPercentTextbox.Text,
                     repeatedAir = D2RepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = D2N2GroupBeforeDiveTextBox.Text,
@@ -539,7 +540,7 @@ namespace Divingjournal2
                     timeAtSafetyStop = D2Comp_timeAtSafetyStop.Text,
                     totalDivingTime = D2Comp_totalDivingTime.Text,
                     N2GroupAfterDive = D2Comp_N2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(D2Comp_isEverythingOKDropDownList),
+                    //   isEverythingOK = checkYesNoDropDownList(D2Comp_isEverythingOKDropDownList),
 
                     left18m = D2Comp_left18m.Text,
                     left15m = D2Comp_left15m.Text,
@@ -563,10 +564,10 @@ namespace Divingjournal2
 
                 var standby = new Models.Diver_Compression
                 {
-                    
-                    of_type = SBcheckOf_TypeDropDownList(),
-                    direct = SBcheckDirectDropDownList(),
-                    airType = SBcheckAirTypeDropDownList(),
+
+                    //    of_type = SBcheckOf_TypeDropDownList(),
+                    //    direct = SBcheckDirectDropDownList(),
+                    //     airType = SBcheckAirTypeDropDownList(),
                     nitroxType = SBNitroxPercentTextbox.Text,
                     repeatedAir = SBRepeatedAirCheckBox.Checked,
                     N2GroupBeforeDive = SBN2GroupBeforeDiveTextBox.Text,
@@ -591,7 +592,7 @@ namespace Divingjournal2
                     timeAtSafetyStop = SBComp_timeAtSafetyStop.Text,
                     totalDivingTime = SBComp_totalDivingTime.Text,
                     N2GroupAfterDive = SBComp_N2GroupAfterDive.Text,
-                    isEverythingOK = checkYesNoDropDownList(SBComp_isEverythingOKDropDownList),
+                    //   isEverythingOK = checkYesNoDropDownList(SBComp_isEverythingOKDropDownList),
 
                     left18m = SBComp_left18m.Text,
                     left15m = SBComp_left15m.Text,
@@ -646,9 +647,9 @@ namespace Divingjournal2
             if (CheckForInternetConnection())
             { WriteToLocalDatabase(); }
             */
-            WriteToLocalDatabase();
-        }
-        private void WriteToLocalDatabase()
+            //WriteToLocalDatabase();
+        } 
+ /*       private void WriteToLocalDatabase()
         {
             DivingJournalContext db = new DivingJournalContext();
             jc.username = HttpContext.Current.Session["Username"].ToString();
@@ -684,7 +685,7 @@ namespace Divingjournal2
             db.SaveChanges();
 
             //Response.Redirect("~/New_Journal.aspx");
-            /*
+            
             if (j.journalType == Models.JournalType.direct)
             {
                 var diver1 = new Models.Diver_Standard
@@ -812,8 +813,8 @@ namespace Divingjournal2
                 db.Diver_Standards.Add(standby);
                 
             }
-            */
-        }
+            
+        } */
 
 
 

@@ -16,9 +16,13 @@ namespace Divingjournal2.Models
         //Bruker som skriver journalen
         public string username { get; set; }
 
-        public Subject subject { get; set; }
+        //public Subject subject { get; set; }
         public JournalType journalType { get; set; }
-        public Transport transport { get; set; }
+        //public Transport transport { get; set; }
+
+        public string subject { get; set; }
+        public string transport { get; set; }
+
         public string courseNumber { get; set; }
         public string other { get; set; }
         public string date { get; set; }
