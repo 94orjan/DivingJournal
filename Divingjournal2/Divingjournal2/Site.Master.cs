@@ -73,7 +73,7 @@ namespace Divingjournal2
         {
             if (Session["Username"] != null)
             {
-                Label_User.Text = "Du er logget inn som " + Session["Username"].ToString();
+                Label_User.Text = "Velkommen, " + Session["Username"].ToString();
             }
             else
             {

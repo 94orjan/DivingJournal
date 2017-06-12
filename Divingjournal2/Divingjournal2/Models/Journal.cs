@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using DiverLibrary;
 
 namespace Divingjournal2.Models
 {
@@ -52,7 +51,7 @@ namespace Divingjournal2.Models
         //Links - to many
         public virtual ICollection<Diver_Standard> Diver_Standards { get; set; }
         public virtual ICollection<Diver_Compression> Diver_Compressions { get; set; }
-        public virtual ICollection<Diver_Pressurechamber> Diver_Pressurechambers { get; set; }
+
 
     }
 }

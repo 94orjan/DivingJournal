@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DiverLibrary;
 using Divingjournal2.DAL;
 using System.Web.Services;
 using System.Diagnostics;
@@ -19,9 +18,6 @@ namespace Divingjournal2
     {
         
         
-        Diver d1 = new Diver();
-        Diver d2 = new Diver();
-        Diver sb = new Diver();
 
         Models.Journal j = new Models.Journal();
         Models.Journal_Pressurechamber pc = new Models.Journal_Pressurechamber();
