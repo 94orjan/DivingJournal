@@ -73,7 +73,7 @@ namespace Divingjournal2
         {
             if (Session["Username"] != null)
             {
-                Label_User.Text += Session["Username"].ToString();
+                Label_User.Text = "Du er logget inn som " + Session["Username"].ToString();
             }
             else
             {
@@ -82,7 +82,7 @@ namespace Divingjournal2
         }
 
         // Warning when loging off
-        public void B_Logout_Click(object sender, FormClosingEventArgs e)
+        public void B_Logout_Click(object sender, EventArgs e)
         {
             switch (MessageBox.Show("Alle ulagrede dokumenter vil gå tapt", "Logger ut", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
@@ -91,7 +91,7 @@ namespace Divingjournal2
                     Response.Redirect("~/Account/Login.aspx");
                     break;
                 case DialogResult.No:
-                    e.Cancel = true;
+                    
                     break;
 
             }
