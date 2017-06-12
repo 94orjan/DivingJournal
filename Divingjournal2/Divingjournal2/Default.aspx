@@ -3,13 +3,13 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
      <link href="css/bootstrap.css" rel="stylesheet" />
-
     <h1 class="h1">Elektronisk loggføring av dykkejournaler</h1>
     
         
-    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
    
     <div class="jumbotron container">
+         
+        <br />
         <div class="btn-block col-md-12">
             <asp:Button ID="NewJournalButton" runat="server" Text="Opprett journal" OnClick="NewJournalButton_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large" />
             <asp:Button ID="GetJournalButton" runat="server" Text="Mine journaler" OnClick="GetJournalButton_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large"/>

@@ -46,7 +46,6 @@
                                 </td>
                             </tr>
                             <tr>
-
                                 <td>
                                     <asp:GridView ID="DateLocationGridView" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource1" Width="100%" CellPadding="1" Height="16px" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                                         <Columns>
