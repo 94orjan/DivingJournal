@@ -47,6 +47,6 @@ namespace Divingjournal2.Models
         //Links - to many
         public virtual ICollection<Diver_Standard> Diver_Standard_Caches { get; set; }
         public virtual ICollection<Diver_Compression> Diver_Compression_Caches { get; set; }
-        public virtual ICollection<Diver_Pressurechamber> Diver_Pressurechambers_Caches { get; set; }
+        
     }
 }

@@ -3,7 +3,7 @@ namespace Divingjournal2.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initialMigration : DbMigration
     {
         public override void Up()
         {
@@ -13,11 +13,10 @@ namespace Divingjournal2.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Journal_CacheID = c.Int(nullable: false),
-                        name = c.String(),
-                        transport = c.Int(nullable: false),
-                        of_type = c.Int(nullable: false),
-                        direct = c.Int(nullable: false),
-                        airType = c.Int(nullable: false),
+                        diver_name = c.String(),
+                        of_type = c.String(),
+                        direct = c.String(),
+                        airType = c.String(),
                         nitroxType = c.String(),
                         repeatedAir = c.String(),
                         breathingGear = c.String(),
@@ -44,10 +43,12 @@ namespace Divingjournal2.Migrations
                         left12m = c.String(),
                         time12_0m = c.String(),
                         reached15mInChamber = c.String(),
+                        surfaceInterval = c.String(),
+                        left15mInChamber = c.String(),
+                        reached12mInChamber = c.String(),
                         o2_1 = c.String(),
                         o2_2 = c.String(),
                         o2_3 = c.String(),
-                        surfaceInterval = c.String(),
                         air_1 = c.String(),
                         air_2 = c.String(),
                         air_3 = c.String(),
@@ -67,9 +68,11 @@ namespace Divingjournal2.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        UserId = c.Int(nullable: false),
-                        subject = c.Int(nullable: false),
+                        journal_name = c.String(),
+                        username = c.String(),
                         journalType = c.Int(nullable: false),
+                        subject = c.String(),
+                        transport = c.String(),
                         courseNumber = c.String(),
                         other = c.String(),
                         date = c.String(),
@@ -80,7 +83,7 @@ namespace Divingjournal2.Migrations
                         divingleader_student = c.String(),
                         diver_1 = c.String(),
                         diver_2 = c.String(),
-                        standby = c.String(),
+                        diver_3 = c.String(),
                         lineman_1 = c.String(),
                         lineman_2 = c.String(),
                         helpman = c.String(),
@@ -95,9 +98,7 @@ namespace Divingjournal2.Migrations
                         notes = c.String(),
                         changelog = c.String(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.User", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Diver_Compression",
@@ -105,10 +106,10 @@ namespace Divingjournal2.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         JournalID = c.Int(nullable: false),
-                        name = c.String(),
-                        of_type = c.Int(nullable: false),
-                        direct = c.Int(nullable: false),
-                        airType = c.Int(nullable: false),
+                        diver_name = c.String(),
+                        of_type = c.String(),
+                        direct = c.String(),
+                        airType = c.String(),
                         nitroxType = c.String(),
                         repeatedAir = c.Boolean(nullable: false),
                         N2GroupBeforeDive = c.String(),
@@ -131,16 +132,18 @@ namespace Divingjournal2.Migrations
                         ascensionToFirstStop = c.String(),
                         timeAtSafetyStop = c.String(),
                         N2GroupAfterDive = c.String(),
-                        isEverythingOK = c.Boolean(nullable: false),
+                        isEverythingOK = c.String(),
                         left18m = c.String(),
                         left15m = c.String(),
                         left12m = c.String(),
                         time12_0m = c.String(),
                         reached15mInChamber = c.String(),
+                        surfaceInterval = c.String(),
+                        left15mInChamber = c.String(),
+                        reached12mInChamber = c.String(),
                         o2_1 = c.String(),
                         o2_2 = c.String(),
                         o2_3 = c.String(),
-                        surfaceInterval = c.String(),
                         air_1 = c.String(),
                         air_2 = c.String(),
                         air_3 = c.String(),
@@ -163,9 +166,10 @@ namespace Divingjournal2.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        subject = c.Int(nullable: false),
+                        username = c.String(),
                         journalType = c.Int(nullable: false),
-                        transport = c.Int(nullable: false),
+                        subject = c.String(),
+                        transport = c.String(),
                         courseNumber = c.String(),
                         other = c.String(),
                         date = c.String(),
@@ -176,7 +180,7 @@ namespace Divingjournal2.Migrations
                         divingleader_student = c.String(),
                         diver_1 = c.String(),
                         diver_2 = c.String(),
-                        standby = c.String(),
+                        diver_3 = c.String(),
                         lineman_1 = c.String(),
                         lineman_2 = c.String(),
                         helpman = c.String(),
@@ -194,31 +198,15 @@ namespace Divingjournal2.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Diver_Pressurechamber",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        JournalID = c.Int(nullable: false),
-                        name = c.String(),
-                        of_type = c.Int(nullable: false),
-                        Journal_Cache_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Journal", t => t.JournalID, cascadeDelete: true)
-                .ForeignKey("dbo.Journal_Cache", t => t.Journal_Cache_Id)
-                .Index(t => t.JournalID)
-                .Index(t => t.Journal_Cache_Id);
-            
-            CreateTable(
                 "dbo.Diver_Standard",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         JournalID = c.Int(nullable: false),
-                        name = c.String(),
-                        of_type = c.Int(nullable: false),
-                        direct = c.Int(nullable: false),
-                        airType = c.Int(nullable: false),
+                        diver_name = c.String(),
+                        of_type = c.String(),
+                        direct = c.String(),
+                        airType = c.String(),
                         nitroxType = c.String(),
                         repeatedAir = c.Boolean(nullable: false),
                         N2GroupBeforeDive = c.String(),
@@ -240,7 +228,7 @@ namespace Divingjournal2.Migrations
                         tableUsed_Minutes = c.String(),
                         ascensionToFirstStop = c.String(),
                         timeAtSafetyStop = c.String(),
-                        isEverythingOK = c.Boolean(nullable: false),
+                        isEverythingOK = c.String(),
                         arrived9m = c.String(),
                         left9m = c.String(),
                         arrived6m = c.String(),
@@ -251,7 +239,6 @@ namespace Divingjournal2.Migrations
                         ascensionTime = c.String(),
                         totalDivingTime = c.String(),
                         N2GroupAfterDive = c.String(),
-                        tes = c.String(),
                         Journal_Cache_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -261,38 +248,15 @@ namespace Divingjournal2.Migrations
                 .Index(t => t.Journal_Cache_Id);
             
             CreateTable(
-                "dbo.User",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Diver_Pressurechamber_Cache",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Journal_CacheID = c.Int(nullable: false),
-                        name = c.String(),
-                        of_type = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Journal_Cache", t => t.Journal_CacheID, cascadeDelete: true)
-                .Index(t => t.Journal_CacheID);
-            
-            CreateTable(
                 "dbo.Diver_Standard_Cache",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Journal_CacheID = c.Int(nullable: false),
-                        name = c.String(),
-                        transport = c.Int(nullable: false),
-                        of_type = c.Int(nullable: false),
-                        direct = c.Int(nullable: false),
-                        airType = c.Int(nullable: false),
+                        diver_name = c.String(),
+                        of_type = c.String(),
+                        direct = c.String(),
+                        airType = c.String(),
                         nitroxType = c.String(),
                         repeatedAir = c.String(),
                         breathingGear = c.String(),
@@ -324,41 +288,121 @@ namespace Divingjournal2.Migrations
                         ascensionTime = c.String(),
                         totalDivingTime = c.String(),
                         N2GroupAfterDive = c.String(),
-                        test = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Journal_Cache", t => t.Journal_CacheID, cascadeDelete: true)
                 .Index(t => t.Journal_CacheID);
+            
+            CreateTable(
+                "dbo.Journal_Pressurechamber_Cache",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        date = c.String(),
+                        location = c.String(),
+                        chamber = c.String(),
+                        purpose = c.String(),
+                        divingchief = c.String(),
+                        divingleader = c.String(),
+                        chamberoperator = c.String(),
+                        chamberassistent = c.String(),
+                        doctor = c.String(),
+                        diver_1 = c.String(),
+                        diver_2 = c.String(),
+                        diver_3 = c.String(),
+                        diver_4 = c.String(),
+                        diver_5 = c.String(),
+                        diver_6 = c.String(),
+                        diver_7 = c.String(),
+                        diver_8 = c.String(),
+                        isChamberClear = c.Boolean(nullable: false),
+                        isOxygenClear = c.Boolean(nullable: false),
+                        treatment = c.Boolean(nullable: false),
+                        airsystem_main = c.String(),
+                        airsystem_secondary = c.String(),
+                        oxygenForChamber_inUse = c.String(),
+                        oxygenForChamber_readyForUse = c.String(),
+                        plannedTable_Depth = c.String(),
+                        plannedTable_Time = c.String(),
+                        leftSurface = c.String(),
+                        reachedBottom = c.String(),
+                        leftBottom_Time = c.String(),
+                        bottomTime = c.String(),
+                        maxDepth = c.String(),
+                        reachedSurface = c.String(),
+                        totalDivingTime = c.String(),
+                        N2GroupAfterDive = c.String(),
+                        isEverythingOK = c.String(),
+                        notes = c.String(),
+                        changelog = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Journal_Pressurechamber",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        date = c.String(),
+                        location = c.String(),
+                        chamber = c.String(),
+                        purpose = c.String(),
+                        divingchief = c.String(),
+                        divingleader = c.String(),
+                        chamberoperator = c.String(),
+                        chamberassistent = c.String(),
+                        doctor = c.String(),
+                        diver_1 = c.String(),
+                        diver_2 = c.String(),
+                        diver_3 = c.String(),
+                        diver_4 = c.String(),
+                        diver_5 = c.String(),
+                        diver_6 = c.String(),
+                        diver_7 = c.String(),
+                        diver_8 = c.String(),
+                        isChamberClear = c.Boolean(nullable: false),
+                        isOxygenClear = c.Boolean(nullable: false),
+                        treatment = c.Boolean(nullable: false),
+                        airsystem_main = c.String(),
+                        airsystem_secondary = c.String(),
+                        oxygenForChamber_inUse = c.String(),
+                        oxygenForChamber_readyForUse = c.String(),
+                        plannedTable_Depth = c.String(),
+                        plannedTable_Time = c.String(),
+                        leftSurface = c.String(),
+                        reachedBottom = c.String(),
+                        leftBottom_Time = c.String(),
+                        bottomTime = c.String(),
+                        maxDepth = c.String(),
+                        reachedSurface = c.String(),
+                        totalDivingTime = c.String(),
+                        N2GroupAfterDive = c.String(),
+                        isEverythingOK = c.String(),
+                        notes = c.String(),
+                        changelog = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Diver_Standard_Cache", "Journal_CacheID", "dbo.Journal_Cache");
-            DropForeignKey("dbo.Diver_Pressurechamber_Cache", "Journal_CacheID", "dbo.Journal_Cache");
             DropForeignKey("dbo.Diver_Compression_Cache", "Journal_CacheID", "dbo.Journal_Cache");
-            DropForeignKey("dbo.Journal_Cache", "UserId", "dbo.User");
             DropForeignKey("dbo.Diver_Standard", "Journal_Cache_Id", "dbo.Journal_Cache");
-            DropForeignKey("dbo.Diver_Pressurechamber", "Journal_Cache_Id", "dbo.Journal_Cache");
             DropForeignKey("dbo.Diver_Compression", "Journal_Cache_Id", "dbo.Journal_Cache");
             DropForeignKey("dbo.Diver_Standard", "JournalID", "dbo.Journal");
-            DropForeignKey("dbo.Diver_Pressurechamber", "JournalID", "dbo.Journal");
             DropForeignKey("dbo.Diver_Compression", "JournalID", "dbo.Journal");
             DropIndex("dbo.Diver_Standard_Cache", new[] { "Journal_CacheID" });
-            DropIndex("dbo.Diver_Pressurechamber_Cache", new[] { "Journal_CacheID" });
             DropIndex("dbo.Diver_Standard", new[] { "Journal_Cache_Id" });
             DropIndex("dbo.Diver_Standard", new[] { "JournalID" });
-            DropIndex("dbo.Diver_Pressurechamber", new[] { "Journal_Cache_Id" });
-            DropIndex("dbo.Diver_Pressurechamber", new[] { "JournalID" });
             DropIndex("dbo.Diver_Compression", new[] { "Journal_Cache_Id" });
             DropIndex("dbo.Diver_Compression", new[] { "JournalID" });
-            DropIndex("dbo.Journal_Cache", new[] { "UserId" });
             DropIndex("dbo.Diver_Compression_Cache", new[] { "Journal_CacheID" });
+            DropTable("dbo.Journal_Pressurechamber");
+            DropTable("dbo.Journal_Pressurechamber_Cache");
             DropTable("dbo.Diver_Standard_Cache");
-            DropTable("dbo.Diver_Pressurechamber_Cache");
-            DropTable("dbo.User");
             DropTable("dbo.Diver_Standard");
-            DropTable("dbo.Diver_Pressurechamber");
             DropTable("dbo.Journal");
             DropTable("dbo.Diver_Compression");
             DropTable("dbo.Journal_Cache");
