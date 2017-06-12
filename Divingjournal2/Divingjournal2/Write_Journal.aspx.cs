@@ -7,17 +7,12 @@ using System.Web.UI.WebControls;
 using System.Diagnostics;
 using System.Net;
 using Divingjournal2.DAL;
-using DiverLibrary;
 
 namespace Divingjournal2
 {
     public partial class Write_Journal : System.Web.UI.Page
     {
         List<Watch> watchList = new List<Watch>();
-
-        Diver d1 = new Diver();
-        Diver d2 = new Diver();
-        Diver sb = new Diver();
 
         Models.Journal j = new Models.Journal();
         Models.Journal_Pressurechamber pc = new Models.Journal_Pressurechamber();
@@ -32,8 +27,6 @@ namespace Divingjournal2
 
         protected override void OnInit(EventArgs e)
         {
-
-
             //Stuff that is available by default, when the page opens first time
             writeHeader("Standarddykk");
             j.journalType = Models.JournalType.direct;
