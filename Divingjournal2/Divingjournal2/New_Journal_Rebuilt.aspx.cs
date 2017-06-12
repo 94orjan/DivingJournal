@@ -940,13 +940,14 @@ namespace Divingjournal2
             return null;
         }
 
-        //Makes datestamp with "Kl " in front. All datestamp buttons use this method. 
+        //Makes datestamp. All datestamp buttons use this method. 
         protected void TimeButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (button.CommandArgument != null)
+            if (button.CommandArgument != null && button.CommandArgument != "")
             {
                 TextBox textbox = (TextBox)FindControlRecursive(Page, button.CommandArgument);
+                textbox.BackColor = System.Drawing.Color.FromArgb(229, 242, 255);
                 textbox.Text = DateTime.Now.ToShortTimeString();
             }
         }
@@ -954,18 +955,21 @@ namespace Divingjournal2
         protected void TimeButtonWithExtraFunction_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            if (button.CommandArgument != null)
+            if (button.CommandArgument != null && button.CommandArgument != "")
             {
                 TextBox textbox = (TextBox)FindControlRecursive(Page, button.CommandArgument);
                 textbox.Text = DateTime.Now.ToShortTimeString();
-            }
+            } 
 
-            Watch watch = findWatch(button);
-
+            //Iterate through all watches
+            for (int i = 0; i < watchList.Count; i++) { 
+                
             //if matches one watch's stopbutton: that watch.calculateTime()
-            if (watch != null)
+            if (watchList[i].stopButton == button)
             {
-                watch.calculateTime();
+                    if (watchList[i].startTextBox.Text != null && watchList[i].startTextBox.Text != "")
+                    watchList[i].calculateTime();
+            }
             }
         }
 
@@ -992,7 +996,7 @@ namespace Divingjournal2
         public void makeWatches()
         {
             Watch D1bottomTimeWatch = new Watch(D1leftBottom_TimeButton, D1LeftSurface, D1leftBottom_Time, D1bottomTime);
-            // Watch D1ascensionToFirstStopWatch = new Watch(D1ascensionToFirstStopButton, D1leftBottom_Time, D1ascensionToFirstStop, D1ascensionToFirstStop);
+            Watch D1ascensionToFirstStopWatch = new Watch(D1ascensionToFirstStopButton, D1leftBottom_Time, D1ascensionToFirstStop, D1ascensionToFirstStop);
             Watch D1ascensionTimeWatch = new Watch(D1reachedSurfaceBtn, D1leftBottom_Time, D1reachedSurface, D1ascensionTime);
             Watch D1totalDivingTimeWatch = new Watch(D1reachedSurfaceBtn, D1LeftSurface, D1reachedSurface, D1totalDivingTime);
 
@@ -1002,7 +1006,7 @@ namespace Divingjournal2
             watchList.Add(D1ascensionTimeWatch);
 
             Watch D2bottomTimeWatch = new Watch(D2leftBottom_TimeButton, D2LeftSurface, D2leftBottom_Time, D2bottomTime);
-            // Watch D2ascensionToFirstStopWatch = new Watch(D2ascensionToFirstStopButton, D2leftBottom_Time, D2ascensionToFirstStop, D2ascensionToFirstStop);
+            Watch D2ascensionToFirstStopWatch = new Watch(D2ascensionToFirstStopButton, D2leftBottom_Time, D2ascensionToFirstStop, D2ascensionToFirstStop);
             Watch D2ascensionTimeWatch = new Watch(D2reachedSurfaceBtn, D2leftBottom_Time, D2reachedSurface, D2ascensionTime);
             Watch D2totalDivingTimeWatch = new Watch(D2reachedSurfaceBtn, D2LeftSurface, D2reachedSurface, D2totalDivingTime);
 
@@ -1012,7 +1016,7 @@ namespace Divingjournal2
             watchList.Add(D2ascensionTimeWatch);
 
             Watch D3bottomTimeWatch = new Watch(D3leftBottom_TimeButton, D3LeftSurface, D3leftBottom_Time, D3bottomTime);
-            // Watch D3ascensionToFirstStopWatch = new Watch(D3ascensionToFirstStopButton, D3leftBottom_Time, D3ascensionToFirstStop, D3ascensionToFirstStop);
+            Watch D3ascensionToFirstStopWatch = new Watch(D3ascensionToFirstStopButton, D3leftBottom_Time, D3ascensionToFirstStop, D3ascensionToFirstStop);
             Watch D3ascensionTimeWatch = new Watch(D3reachedSurfaceBtn, D3leftBottom_Time, D3reachedSurface, D3ascensionTime);
             Watch D3totalDivingTimeWatch = new Watch(D3reachedSurfaceBtn, D3LeftSurface, D3reachedSurface, D3totalDivingTime);
 
@@ -1056,6 +1060,8 @@ namespace Divingjournal2
         public TextBox startTextBox { get; set; }
         public TextBox stopTextBox { get; set; }
         public TextBox resultTextBox { get; set; }
+        public TextBox resultTextBox2 { get; set; }
+        public TextBox resultTextBox3 { get; set; }
 
         public Watch(TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox)
         {
@@ -1072,6 +1078,25 @@ namespace Divingjournal2
             resultTextBox = _resultTextBox;
         }
 
+        public Watch(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2)
+        {
+            stopButton = _stopButton;
+            startTextBox = _startTextBox;
+            stopTextBox = _stopTextBox;
+            resultTextBox = _resultTextBox;
+            resultTextBox2 = _resultTextBox2;
+        }
+
+        public Watch(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2, TextBox _resultTextBox3)
+        {
+            stopButton = _stopButton;
+            startTextBox = _startTextBox;
+            stopTextBox = _stopTextBox;
+            resultTextBox = _resultTextBox;
+            resultTextBox2 = _resultTextBox2;
+            resultTextBox3 = _resultTextBox3;
+        }
+
         public void calculateTime()
         {
             TimeSpan startTimeSpan, stopTimeSpan;
@@ -1081,6 +1106,11 @@ namespace Divingjournal2
             {
                 try
                 {
+                    if (startTextBox.Text == "")
+                    {
+                        startTextBox.Text = DateTime.Now.ToShortTimeString();
+                    }
+
                     startTimeSpan = TimeSpan.Parse(startTextBox.Text);
                     stopTimeSpan = TimeSpan.Parse(stopTextBox.Text);
                     int mins = (int)stopTimeSpan.TotalMinutes + 1 - (int)startTimeSpan.TotalMinutes; //+1 here so it always rounds up
@@ -1095,12 +1125,40 @@ namespace Divingjournal2
                 {
 
                 }
-
-
-
-
             }
         }
 
+        public void calculateTimeWithSeconds()
+        {
+            TimeSpan startTimeSpan, stopTimeSpan;
+
+            if (startTextBox != null && stopTextBox != null)
+
+            {
+                try
+                {
+                    if (startTextBox.Text == "")
+                    {
+                        startTextBox.Text = DateTime.Now.ToShortTimeString();
+                    }
+
+                    startTimeSpan = TimeSpan.Parse(startTextBox.Text);
+                    stopTimeSpan = TimeSpan.Parse(stopTextBox.Text);
+                    int mins = (int)stopTimeSpan.TotalMinutes + 1 - (int)startTimeSpan.TotalMinutes; //+1 here so it always rounds up
+                    int secs = (int)stopTimeSpan.TotalSeconds - (int)startTimeSpan.TotalSeconds;
+                    resultTextBox.Text = mins.ToString();
+                }
+                catch (FormatException)
+                {
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE='JavaScript'>alert('Feil format. Kl som hh:mm')</SCRIPT>");
+
+                }
+                catch (OverflowException)
+                {
+
+                }
+
+            }
+        }
     }
 }
