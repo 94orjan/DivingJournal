@@ -57,7 +57,6 @@ namespace Divingjournal2.Models
         public string o2_1 { get; set; }
         public string o2_2 { get; set; }
         public string o2_3 { get; set; }
-        
         public string air_1 { get; set; }
         public string air_2 { get; set; }
         public string air_3 { get; set; }

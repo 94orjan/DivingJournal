@@ -26,6 +26,7 @@ namespace Divingjournal2
         Models.Journal j = new Models.Journal();
         Models.Journal_Pressurechamber pc = new Models.Journal_Pressurechamber();
         Models.Journal_Cache jc = new Models.Journal_Cache();
+        Models.Journal_Pressurechamber_Cache pcc = new Models.Journal_Pressurechamber_Cache();
 
         public static Models.Journal_Cache local_jc = new Models.Journal_Cache();
 
@@ -66,7 +67,7 @@ namespace Divingjournal2
                 Divingleader_studentTextBox.Text = local_jc.divingleader_student;
                 Diver_1TextBox.Text = local_jc.diver_1;
                 Diver_2TextBox.Text = local_jc.diver_2;
-                StandbyTextBox.Text = local_jc.standby;
+                StandbyTextBox.Text = local_jc.diver_3;
                 isLoaded = false;
             }
 
@@ -647,8 +648,8 @@ namespace Divingjournal2
             { WriteToLocalDatabase(); }
             */
             //WriteToLocalDatabase();
-        }
-       /* private void WriteToLocalDatabase()
+        } 
+ /*       private void WriteToLocalDatabase()
         {
             DivingJournalContext db = new DivingJournalContext();
             jc.username = HttpContext.Current.Session["Username"].ToString();
@@ -684,7 +685,7 @@ namespace Divingjournal2
             db.SaveChanges();
 
             //Response.Redirect("~/New_Journal.aspx");
-            /*
+            
             if (j.journalType == Models.JournalType.direct)
             {
                 var diver1 = new Models.Diver_Standard

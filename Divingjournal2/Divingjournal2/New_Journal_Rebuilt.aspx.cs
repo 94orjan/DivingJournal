@@ -21,7 +21,9 @@ namespace Divingjournal2
 
         Models.Journal j = new Models.Journal();
         Models.Journal_Pressurechamber pc = new Models.Journal_Pressurechamber();
+
         Models.Journal_Cache jc = new Models.Journal_Cache();
+        Models.Journal_Pressurechamber_Cache pcc = new Models.Journal_Pressurechamber_Cache();
 
         public static Models.Journal_Cache local_jc = new Models.Journal_Cache();
 
@@ -151,15 +153,13 @@ namespace Divingjournal2
 
         }
 
-            private void WriteToDatabase()
+        private void WriteToDatabase()
             {
                 DivingJournalContext db = new DivingJournalContext();
                 j.username = HttpContext.Current.Session["Username"].ToString();
 
             if (PressureChamberDiveButton.Enabled)
             {
-
-
 
                 j.subject = checkSubjectDropDownList();
                 j.transport = checkTransportCheckBoxes();
@@ -186,10 +186,12 @@ namespace Divingjournal2
                 j.emergencyGas_divingBell = emergencyGas_divingBellTextBox.Text;
                 j.emergencyGas_divingBasket = emergencyGas_divingBasketTextBox.Text;
                 j.notes = notesTextBox.Text;
+
+                Session["Journal_Id"] = j.Id;
                 //må legge til changelog
                 db.Journals.Add(j);
                 db.SaveChanges();
-                Session["Journal_Id"] = j.Id;
+                
                 if (j.journalType == Models.JournalType.direct)
                 {
                     var diver1 = new Models.Diver_Standard
@@ -457,10 +459,389 @@ namespace Divingjournal2
             } else //if pressurechamberButton is disabled = pressurechamber dive
             {
                 //Map journal_pressurechamber
+                
+                pc.date = DateTextBox.Text;
+                pc.location = LocationTextBox.Text;
+                pc.purpose = PurposeTextBox.Text;
+                pc.chamber = ChamberTextBox.Text;
+                pc.divingchief = DivingchiefTextBox.Text;
+                pc.divingleader = divingleader_teacherTextBox.Text;
+                pc.chamberoperator = ChamberOperatorTextBox.Text;
+                pc.chamberassistent = ChamberAssistantTextBox.Text;
+                pc.doctor = DoctorTextBox.Text;
+
+                pc.diver_1 = PCDiver1TextBox.Text;
+                pc.diver_2 = PCDiver2TextBox.Text;
+                pc.diver_3 = PCDiver3TextBox.Text;
+                pc.diver_4 = PCDiver4TextBox.Text;
+                pc.diver_5 = PCDiver5TextBox.Text;
+                pc.diver_6 = PCDiver6TextBox.Text;
+                pc.diver_7 = PCDiver7TextBox.Text;
+                pc.diver_8 = PCDiver8TextBox.Text;
+
+                pc.isChamberClear = isChamberClearCheckBox.Checked;
+                pc.isOxygenClear = isOxygenClearCheckBox.Checked;
+                pc.treatment = treatmentCheckBox.Checked;
+
+                pc.airsystem_main = airsystem_mainTextBox.Text;
+                pc.airsystem_secondary = airsystem_secondaryTextBox.Text;
+                pc.oxygenForChamber_inUse = oxygenForChamber_inUseTextBox.Text;
+                pc.oxygenForChamber_readyForUse = oxygenForChamber_readyForUseTextBox.Text;
+                pc.notes = notesTextBox.Text;
+
+                db.Journal_Pressurechambers.Add(pc);
+                db.SaveChanges();
             }
             } 
 
+        private void WriteToLocalDatabase()
+        {
+            DivingJournalContext db = new DivingJournalContext();
+            jc.username = HttpContext.Current.Session["Username"].ToString();
 
+            if (PressureChamberDiveButton.Enabled)
+            {
+
+                jc.subject = checkSubjectDropDownList();
+                jc.transport = checkTransportCheckBoxes();
+                jc.courseNumber = courseNumberTextBox.Text;
+                jc.other = otherTextBox.Text;
+                jc.date = DateTextBox.Text;
+                jc.location = LocationTextBox.Text;
+                jc.divingSpot = DivingSpotTextBox.Text;
+                jc.divingchief = DivingchiefTextBox.Text;
+                jc.divingleader_teacher = divingleader_teacherTextBox.Text;
+                jc.divingleader_student = divingleader_studentTextBox.Text;
+                jc.diver_1 = diver_1TextBox.Text;
+                jc.diver_2 = diver_2TextBox.Text;
+                jc.diver_3 = diver_3TextBox.Text;
+                jc.lineman_1 = lineman_1TextBox.Text;
+                jc.lineman_2 = lineman_2TextBox.Text;
+                jc.helpman = helpmanTextBox.Text;
+                jc.helpman_assisting = helpman_assistingTextBox.Text;
+                jc.others = othersTextBox.Text;
+                jc.airsystem_main = airsystem_mainTextBox.Text;
+                jc.airsystem_secondary = airsystem_secondaryTextBox.Text;
+                jc.oxygenForChamber_inUse = oxygenForChamber_inUseTextBox.Text;
+                jc.oxygenForChamber_readyForUse = oxygenForChamber_readyForUseTextBox.Text;
+                jc.emergencyGas_divingBell = emergencyGas_divingBellTextBox.Text;
+                jc.emergencyGas_divingBasket = emergencyGas_divingBasketTextBox.Text;
+                jc.notes = notesTextBox.Text;
+
+                Session["Journal_Id"] = jc.Id;
+                //må legge til changelog
+                db.Journals.Add(j);
+                db.SaveChanges();
+
+                if (jc.journalType == Models.JournalType.direct)
+                {
+                    var diver1 = new Models.Diver_Standard
+                    {
+                        //map data fra webform til diver_standard
+                        JournalID = jc.Id,
+                        of_type = checkDropDownList(D1of_typeDropDownList),
+                        direct = checkDropDownList(D1directDropDownList),
+                        airType = checkDropDownList(D1AirTypeDropDownList),
+                        nitroxType = D1NitroxPercentTextBox.Text,
+                        repeatedAir = D1RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D1N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D1breathingGearTextBox.Text,
+                        volume = D1volumeTextBox.Text,
+                        pressure = D1pressureTextBox.Text,
+                        plannedDepth = D1plannedDepthTextBox.Text,
+                        plannedTime = D1plannedTimeTextBox.Text,
+                        courseDive = D1courseDiveTextBox.Text,
+                        leftSurface = D1LeftSurface.Text,
+                        reachedBottom = D1reachedBottom.Text,
+                        leftBottom_Depth = D1leftBottom_Depth.Text,
+                        leftBottom_Time = D1leftBottom_Time.Text,
+                        bottomTime = D1bottomTime.Text,
+                        maxDepth = D1maxDepth.Text,
+                        ELD = D1ELD.Text,
+                        additionToBottomTime = D1additionToBottomTime.Text,
+                        tableUsed_Meter = D1tableUsed_Meter.Text,
+                        tableUsed_Minutes = D1tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D1ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D1timeAtSafetyStop.Text,
+                        totalDivingTime = D1totalDivingTime.Text,
+                        N2GroupAfterDive = D1N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D1isEverythingOKDropDownList),
+                        arrived9m = D1arrived9m.Text,
+                        arrived6m = D1arrived6m.Text,
+                        arrived3m = D1arrived3m.Text,
+                        reachedSurface = D1reachedSurface.Text,
+                        ascensionTime = D1ascensionTime.Text
+                    };
+                    var diver2 = new Models.Diver_Standard
+                    {
+                        JournalID = jc.Id,
+                        of_type = checkDropDownList(D2of_typeDropDownList),
+                        direct = checkDropDownList(D2directDropDownList),
+                        airType = checkDropDownList(D2AirTypeDropDownList),
+                        nitroxType = D2NitroxPercentTextBox.Text,
+                        repeatedAir = D2RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D2N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D2breathingGearTextBox.Text,
+                        volume = D2volumeTextBox.Text,
+                        pressure = D2pressureTextBox.Text,
+                        plannedDepth = D2PlannedDepthTextBox.Text,
+                        plannedTime = D2PlannedTimeTextBox.Text,
+                        courseDive = D2CourseDiveTextBox.Text,
+                        leftSurface = D2LeftSurface.Text,
+                        reachedBottom = D2reachedBottom.Text,
+                        leftBottom_Depth = D2leftBottom_Depth.Text,
+                        leftBottom_Time = D2leftBottom_Time.Text,
+                        bottomTime = D2bottomTime.Text,
+                        maxDepth = D2maxDepth.Text,
+                        ELD = D2ELD.Text,
+                        additionToBottomTime = D2additionToBottomTime.Text,
+                        tableUsed_Meter = D2tableUsed_Meter.Text,
+                        tableUsed_Minutes = D2tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D2ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D2timeAtSafetyStop.Text,
+                        totalDivingTime = D2totalDivingTime.Text,
+                        N2GroupAfterDive = D2N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D2isEverythingOKDropDownList),
+                        arrived9m = D2arrived9m.Text,
+                        arrived6m = D2arrived6m.Text,
+                        arrived3m = D2arrived3m.Text,
+                        reachedSurface = D2reachedSurface.Text,
+                        ascensionTime = D2ascensionTime.Text
+                    };
+                    var diver3 = new Models.Diver_Standard
+                    {
+                        JournalID = jc.Id,
+                        of_type = checkDropDownList(D3of_typeDropDownList),
+                        direct = checkDropDownList(D3directDropDownList),
+                        airType = checkDropDownList(D3AirTypeDropDownList),
+                        nitroxType = D3NitroxPercentTextBox.Text,
+                        repeatedAir = D3RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D3N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D3breathingGearTextBox.Text,
+                        volume = D3volumeTextBox.Text,
+                        pressure = D3PressureTextBox.Text,
+                        plannedDepth = D3PlannedDepthTextBox.Text,
+                        plannedTime = D3PlannedTimeTextBox.Text,
+                        courseDive = D3CourseDiveTextBox.Text,
+                        leftSurface = D3LeftSurface.Text,
+                        reachedBottom = D3reachedBottom.Text,
+                        leftBottom_Depth = D3leftBottom_Depth.Text,
+                        leftBottom_Time = D3leftBottom_Time.Text,
+                        bottomTime = D3bottomTime.Text,
+                        maxDepth = D3maxDepth.Text,
+                        ELD = D3ELD.Text,
+                        additionToBottomTime = D3additionToBottomTime.Text,
+                        tableUsed_Meter = D3tableUsed_Meter.Text,
+                        tableUsed_Minutes = D3tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D3ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D3timeAtSafetyStop.Text,
+                        totalDivingTime = D3totalDivingTime.Text,
+                        N2GroupAfterDive = D3N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D3isEverythingOKDropDownList),
+                        arrived9m = D3arrived9m.Text,
+                        arrived6m = D3arrived6m.Text,
+                        arrived3m = D3arrived3m.Text,
+                        reachedSurface = D3reachedSurface.Text,
+                        ascensionTime = D3ascensionTime.Text
+                    };
+                    db.Diver_Standards.Add(diver1);
+                    db.Diver_Standards.Add(diver2);
+                    db.Diver_Standards.Add(diver3);
+                }
+                else
+                {
+                    var diver1 = new Models.Diver_Compression
+                    {
+                        //map data fra webform til diver_standard
+                        of_type = checkDropDownList(D1of_typeDropDownList),
+                        direct = checkDropDownList(D1directDropDownList),
+                        airType = checkDropDownList(D1AirTypeDropDownList),
+                        nitroxType = D1NitroxPercentTextBox.Text,
+                        repeatedAir = D1RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D1N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D1breathingGearTextBox.Text,
+                        volume = D1volumeTextBox.Text,
+                        pressure = D1pressureTextBox.Text,
+                        plannedDepth = D1plannedDepthTextBox.Text,
+                        plannedTime = D1plannedTimeTextBox.Text,
+                        courseDive = D1courseDiveTextBox.Text,
+                        leftSurface = D1LeftSurface.Text,
+                        reachedBottom = D1reachedBottom.Text,
+                        leftBottom_Depth = D1leftBottom_Depth.Text,
+                        leftBottom_Time = D1leftBottom_Time.Text,
+                        bottomTime = D1bottomTime.Text,
+                        maxDepth = D1maxDepth.Text,
+                        ELD = D1ELD.Text,
+                        additionToBottomTime = D1additionToBottomTime.Text,
+                        tableUsed_Meter = D1tableUsed_Meter.Text,
+                        tableUsed_Minutes = D1tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D1ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D1timeAtSafetyStop.Text,
+                        totalDivingTime = D1totalDivingTime.Text,
+                        N2GroupAfterDive = D1N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D1isEverythingOKDropDownList),
+                        left18m = D1left18m.Text,
+                        left15m = D1left15m.Text,
+                        left12m = D1left12m.Text,
+                        time12_0m = D1time12_0m.Text,
+                        reached15mInChamber = D1reached15mInChamber.Text,
+                        surfaceInterval = D1surfaceInterval.Text,
+                        left15mInChamber = D1left15mInChamber.Text,
+                        reached12mInChamber = D1reached12mInChamber.Text,
+                        o2_1 = D1o2_1.Text,
+                        o2_2 = D1o2_2.Text,
+                        o2_3 = D1o2_3.Text,
+                        air_1 = D1air_1.Text,
+                        air_2 = D1air_2.Text,
+                        air_3 = D1air_3.Text,
+                        left12mWithoutO2 = D1left12mWithoutO2.Text,
+                        reachedSurface = D1reachedSurface.Text,
+                        timeInChamber = D1timeInChamber.Text,
+                        timeAtSea = D1timeAtSea.Text,
+                        totalDecompression = D1totalDecompression.Text,
+                    };
+                    var diver2 = new Models.Diver_Compression
+                    {
+                        of_type = checkDropDownList(D2of_typeDropDownList),
+                        direct = checkDropDownList(D2directDropDownList),
+                        airType = checkDropDownList(D2AirTypeDropDownList),
+                        nitroxType = D2NitroxPercentTextBox.Text,
+                        repeatedAir = D2RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D2N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D2breathingGearTextBox.Text,
+                        volume = D2volumeTextBox.Text,
+                        pressure = D2pressureTextBox.Text,
+                        plannedDepth = D2PlannedDepthTextBox.Text,
+                        plannedTime = D2PlannedTimeTextBox.Text,
+                        courseDive = D2CourseDiveTextBox.Text,
+                        leftSurface = D2LeftSurface.Text,
+                        reachedBottom = D2reachedBottom.Text,
+                        leftBottom_Depth = D2leftBottom_Depth.Text,
+                        leftBottom_Time = D2leftBottom_Time.Text,
+                        bottomTime = D2bottomTime.Text,
+                        maxDepth = D2maxDepth.Text,
+                        ELD = D2ELD.Text,
+                        additionToBottomTime = D2additionToBottomTime.Text,
+                        tableUsed_Meter = D2tableUsed_Meter.Text,
+                        tableUsed_Minutes = D2tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D2ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D2timeAtSafetyStop.Text,
+                        totalDivingTime = D2totalDivingTime.Text,
+                        N2GroupAfterDive = D2N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D2isEverythingOKDropDownList),
+                        left18m = D2left18m.Text,
+                        left15m = D2left15m.Text,
+                        left12m = D2left12m.Text,
+                        time12_0m = D2time12_0m.Text,
+                        reached15mInChamber = D2reached15mInChamber.Text,
+                        left15mInChamber = D2left15mInChamber.Text,
+                        reached12mInChamber = D2reached12mInChamber.Text,
+                        o2_1 = D2o2_1.Text,
+                        o2_2 = D2o2_2.Text,
+                        o2_3 = D2o2_3.Text,
+                        surfaceInterval = D2surfaceInterval.Text,
+                        air_1 = D2air_1.Text,
+                        air_2 = D2air_2.Text,
+                        air_3 = D2air_3.Text,
+                        left12mWithoutO2 = D2left12mWithoutO2.Text,
+                        reachedSurface = D2reachedSurface.Text,
+                        timeInChamber = D2timeInChamber.Text,
+                        timeAtSea = D2timeAtSea.Text,
+                        totalDecompression = D2totalDecompression.Text,
+                    };
+                    var diver3 = new Models.Diver_Compression
+                    {
+                        of_type = checkDropDownList(D3of_typeDropDownList),
+                        direct = checkDropDownList(D3directDropDownList),
+                        airType = checkDropDownList(D3AirTypeDropDownList),
+                        nitroxType = D3NitroxPercentTextBox.Text,
+                        repeatedAir = D3RepeatedCheckBox.Checked,
+                        N2GroupBeforeDive = D3N2GroupBeforeDiveTextBox.Text,
+                        breathingGear = D3breathingGearTextBox.Text,
+                        volume = D3volumeTextBox.Text,
+                        pressure = D3PressureTextBox.Text,
+                        plannedDepth = D3PlannedDepthTextBox.Text,
+                        plannedTime = D3PlannedTimeTextBox.Text,
+                        courseDive = D3CourseDiveTextBox.Text,
+                        leftSurface = D3LeftSurface.Text,
+                        reachedBottom = D3reachedBottom.Text,
+                        leftBottom_Depth = D3leftBottom_Depth.Text,
+                        leftBottom_Time = D3leftBottom_Time.Text,
+                        bottomTime = D3bottomTime.Text,
+                        maxDepth = D3maxDepth.Text,
+                        ELD = D3ELD.Text,
+                        additionToBottomTime = D3additionToBottomTime.Text,
+                        tableUsed_Meter = D3tableUsed_Meter.Text,
+                        tableUsed_Minutes = D3tableUsed_Minutes.Text,
+                        ascensionToFirstStop = D3ascensionToFirstStop.Text,
+                        timeAtSafetyStop = D3timeAtSafetyStop.Text,
+                        totalDivingTime = D3totalDivingTime.Text,
+                        N2GroupAfterDive = D3N2GroupAfterDive.Text,
+                        isEverythingOK = checkDropDownList(D3isEverythingOKDropDownList),
+                        left18m = D3left18m.Text,
+                        left15m = D3left15m.Text,
+                        left12m = D3left12m.Text,
+                        time12_0m = D3time12_0m.Text,
+                        reached15mInChamber = D3reached15mInChamber.Text,
+                        surfaceInterval = D3surfaceInterval.Text,
+                        left15mInChamber=D3left15mInChamber.Text,
+                        reached12mInChamber = D3reached12mInChamber.Text,
+                        o2_1 = D3o2_1.Text,
+                        o2_2 = D3o2_2.Text,
+                        o2_3 = D3o2_3.Text,
+                        air_1 = D3air_1.Text,
+                        air_2 = D3air_2.Text,
+                        air_3 = D3air_3.Text,
+                        left12mWithoutO2 = D3left12mWithoutO2.Text,
+                        reachedSurface = D3reachedSurface.Text,
+                        timeInChamber = D3timeInChamber.Text,
+                        timeAtSea = D3timeAtSea.Text,
+                        totalDecompression = D3totalDecompression.Text,
+                    };
+                    db.Diver_Compressions.Add(diver1);
+                    db.Diver_Compressions.Add(diver2);
+                    db.Diver_Compressions.Add(diver3);
+                }
+                db.SaveChanges();
+            }
+            else //if pressurechamberButton is disabled = pressurechamber dive
+            {
+                //Map journal_pressurechamber
+
+                pcc.date = DateTextBox.Text;
+                pcc.location = LocationTextBox.Text;
+                pcc.purpose = PurposeTextBox.Text;
+                pcc.chamber = ChamberTextBox.Text;
+                pcc.divingchief = DivingchiefTextBox.Text;
+                pcc.divingleader = divingleader_teacherTextBox.Text;
+                pcc.chamberoperator = ChamberOperatorTextBox.Text;
+                pcc.chamberassistent = ChamberAssistantTextBox.Text;
+                pcc.doctor = DoctorTextBox.Text;
+
+                pcc.diver_1 = PCDiver1TextBox.Text;
+                pcc.diver_2 = PCDiver2TextBox.Text;
+                pcc.diver_3 = PCDiver3TextBox.Text;
+                pcc.diver_4 = PCDiver4TextBox.Text;
+                pcc.diver_5 = PCDiver5TextBox.Text;
+                pcc.diver_6 = PCDiver6TextBox.Text;
+                pcc.diver_7 = PCDiver7TextBox.Text;
+                pcc.diver_8 = PCDiver8TextBox.Text;
+
+                pcc.isChamberClear = isChamberClearCheckBox.Checked;
+                pcc.isOxygenClear = isOxygenClearCheckBox.Checked;
+                pcc.treatment = treatmentCheckBox.Checked;
+
+                pcc.airsystem_main = airsystem_mainTextBox.Text;
+                pcc.airsystem_secondary = airsystem_secondaryTextBox.Text;
+                pcc.oxygenForChamber_inUse = oxygenForChamber_inUseTextBox.Text;
+                pcc.oxygenForChamber_readyForUse = oxygenForChamber_readyForUseTextBox.Text;
+                pcc.notes = notesTextBox.Text;
+
+                db.Journal_Pressurechambers.Add(pc);
+                db.SaveChanges();
+            }
+
+        }
 
         protected void BellAndBasket_CheckedChanged(object sender, EventArgs e)
         {
@@ -653,6 +1034,16 @@ namespace Divingjournal2
                 }
             }
             return foundWatch;
+        }
+
+        protected void LocalSaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void SaveToDatabaseButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

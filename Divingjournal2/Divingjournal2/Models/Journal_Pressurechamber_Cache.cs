@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Divingjournal2.Models
 {
-    public class Journal_Pressurechamber
+    public class Journal_Pressurechamber_Cache
     {
         //PK
         public int Id { get; set; }

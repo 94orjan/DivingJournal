@@ -13,9 +13,7 @@ namespace Divingjournal2.Models
         public string journal_name { get; set; }
         public string username { get; set; }
 
-        //public Subject subject { get; set; }
         public JournalType journalType { get; set; }
-        //public Transport transport { get; set; }
 
         public string subject { get; set; }
         public string transport { get; set; }
@@ -30,7 +28,7 @@ namespace Divingjournal2.Models
         public string divingleader_student { get; set; }
         public string diver_1 { get; set; }
         public string diver_2 { get; set; }
-        public string standby { get; set; }
+        public string diver_3 { get; set; }
         public string lineman_1 { get; set; }
         public string lineman_2 { get; set; }
         public string helpman { get; set; }

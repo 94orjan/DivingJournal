@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="New_Journal_Rebuilt.aspx.cs" Inherits="Divingjournal2.New_Journal_Rebuilt" %>
+﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="New_Journal_Rebuilt.aspx.cs" Inherits="Divingjournal2.New_Journal_Rebuilt" %>
 
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -16,6 +16,10 @@
         <div class="container">
 
             <div class="jumbotron">
+                <div class=" btn-group pull-right">
+                    <asp:Button runat="server" ID="LocalSaveButton" Text="Lagre midlertidig" OnClick="LocalSaveButton_Click" CssClass="btn-primary btn" />
+                    <asp:Button runat="server" ID="SaveToDatabaseButton" Text="Lagre til database" OnClick="SaveToDatabaseButton_Click" CssClass="btn-success btn"/>
+                </div>
                 <asp:Label ID="HeaderLabel" runat="server"></asp:Label>
                 <h3 class="h3" id="h1Title"></h3>
 
@@ -24,6 +28,8 @@
                 <asp:Button CssClass="btn-lg btn-primary btn" runat="server" id="PressureChamberDiveButton" OnClick="PressureChamberDiveButton_Click" Text="Trykkammer" Width="33%" />
 
             </div>
+
+            
 
         <div>
 
@@ -1803,6 +1809,10 @@
                 <asp:TextBox ID="notesTextBox" TextMode="MultiLine" Columns="50" Rows="5" runat="server"></asp:TextBox>
             </div>
 
+            <div class=" btn-group pull-right">
+                <asp:Button runat="server" ID="Button1" Text="Lagre midlertidig" OnClick="LocalSaveButton_Click" CssClass="btn-primary btn" />
+                <asp:Button runat="server" ID="Button2" Text="Lagre til database" OnClick="SaveToDatabaseButton_Click" CssClass="btn-success btn"/>
+            </div>
 
 
         </div>
