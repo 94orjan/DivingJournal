@@ -13,8 +13,9 @@
                 <EmptyDataTemplate><h1>Ingen resultat...</h1></EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                    <asp:BoundField DataField="subject" HeaderText="subject" SortExpression="subject" />
+                    <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
                     <asp:BoundField DataField="journalType" HeaderText="journalType" SortExpression="journalType" />
+                    <asp:BoundField DataField="subject" HeaderText="subject" SortExpression="subject" />
                     <asp:BoundField DataField="transport" HeaderText="transport" SortExpression="transport" />
                     <asp:BoundField DataField="courseNumber" HeaderText="courseNumber" SortExpression="courseNumber" />
                     <asp:BoundField DataField="other" HeaderText="other" SortExpression="other" />
@@ -26,7 +27,7 @@
                     <asp:BoundField DataField="divingleader_student" HeaderText="divingleader_student" SortExpression="divingleader_student" />
                     <asp:BoundField DataField="diver_1" HeaderText="diver_1" SortExpression="diver_1" />
                     <asp:BoundField DataField="diver_2" HeaderText="diver_2" SortExpression="diver_2" />
-                    <asp:BoundField DataField="standby" HeaderText="standby" SortExpression="standby" />
+                    <asp:BoundField DataField="diver_3" HeaderText="diver_3" SortExpression="diver_3" />
                     <asp:BoundField DataField="lineman_1" HeaderText="lineman_1" SortExpression="lineman_1" />
                     <asp:BoundField DataField="lineman_2" HeaderText="lineman_2" SortExpression="lineman_2" />
                     <asp:BoundField DataField="helpman" HeaderText="helpman" SortExpression="helpman" />
@@ -40,9 +41,9 @@
                     <asp:BoundField DataField="emergencyGas_divingBasket" HeaderText="emergencyGas_divingBasket" SortExpression="emergencyGas_divingBasket" />
                     <asp:BoundField DataField="notes" HeaderText="notes" SortExpression="notes" />
                     <asp:BoundField DataField="changelog" HeaderText="changelog" SortExpression="changelog" />
-                    <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
                     <asp:BoundField DataField="Id1" HeaderText="Id1" InsertVisible="False" ReadOnly="True" SortExpression="Id1" />
                     <asp:BoundField DataField="JournalID" HeaderText="JournalID" SortExpression="JournalID" />
+                    <asp:BoundField DataField="diver_name" HeaderText="diver_name" SortExpression="diver_name" />
                     <asp:BoundField DataField="of_type" HeaderText="of_type" SortExpression="of_type" />
                     <asp:BoundField DataField="direct" HeaderText="direct" SortExpression="direct" />
                     <asp:BoundField DataField="airType" HeaderText="airType" SortExpression="airType" />
@@ -67,7 +68,7 @@
                     <asp:BoundField DataField="tableUsed_Minutes" HeaderText="tableUsed_Minutes" SortExpression="tableUsed_Minutes" />
                     <asp:BoundField DataField="ascensionToFirstStop" HeaderText="ascensionToFirstStop" SortExpression="ascensionToFirstStop" />
                     <asp:BoundField DataField="timeAtSafetyStop" HeaderText="timeAtSafetyStop" SortExpression="timeAtSafetyStop" />
-                    <asp:CheckBoxField DataField="isEverythingOK" HeaderText="isEverythingOK" SortExpression="isEverythingOK" />
+                    <asp:BoundField DataField="isEverythingOK" HeaderText="isEverythingOK" SortExpression="isEverythingOK" />
                     <asp:BoundField DataField="arrived9m" HeaderText="arrived9m" SortExpression="arrived9m" />
                     <asp:BoundField DataField="left9m" HeaderText="left9m" SortExpression="left9m" />
                     <asp:BoundField DataField="arrived6m" HeaderText="arrived6m" SortExpression="arrived6m" />
@@ -78,16 +79,14 @@
                     <asp:BoundField DataField="ascensionTime" HeaderText="ascensionTime" SortExpression="ascensionTime" />
                     <asp:BoundField DataField="totalDivingTime" HeaderText="totalDivingTime" SortExpression="totalDivingTime" />
                     <asp:BoundField DataField="N2GroupAfterDive" HeaderText="N2GroupAfterDive" SortExpression="N2GroupAfterDive" />
-                    <asp:BoundField DataField="tes" HeaderText="tes" SortExpression="tes" />
                     <asp:BoundField DataField="Journal_Cache_Id" HeaderText="Journal_Cache_Id" SortExpression="Journal_Cache_Id" />
-                    <asp:BoundField DataField="diver_name" HeaderText="diver_name" SortExpression="diver_name" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="QueryResult" runat="server" ConnectionString="<%$ ConnectionStrings:DivingJournalContext %>" SelectCommand="SELECT Journal.*, Diver_Standard.* FROM Journal INNER JOIN Diver_Standard ON Journal.Id = Diver_Standard.JournalID WHERE ([diver_2] = @diver_2) OR ([diver_1] = @diver_1)  OR ([standby] = @standby) OR ([date] = @date) OR ([divingleader_teacher] = @divingleader_teacher) OR ([divingleader_student] = @divingleader_student) OR ([courseNumber] = @courseNumber);">
+            <asp:SqlDataSource ID="QueryResult" runat="server" ConnectionString="<%$ ConnectionStrings:DivingJournalContext %>" SelectCommand="SELECT Journal.*, Diver_Standard.* FROM Journal INNER JOIN Diver_Standard ON Journal.Id = Diver_Standard.JournalID WHERE ([diver_2] = @diver_2) OR ([diver_1] = @diver_1)  OR ([diver_3] = @diver_3) OR ([date] = @date) OR ([divingleader_teacher] = @divingleader_teacher) OR ([divingleader_student] = @divingleader_student) OR ([courseNumber] = @courseNumber);">
                 <SelectParameters>
                     <asp:SessionParameter Name="diver_2" SessionField="Dykker" DefaultValue="x" />
                     <asp:SessionParameter Name="diver_1" SessionField="Dykker" DefaultValue="x" />
-                    <asp:SessionParameter DefaultValue="x" Name="standby" SessionField="Dykker" />
+                    <asp:SessionParameter DefaultValue="x" Name="diver_3" SessionField="Dykker" />
                     <asp:SessionParameter Name="date" SessionField="Dato" DefaultValue="x" />
                     <asp:SessionParameter DefaultValue="x" Name="divingleader_teacher" SessionField="Dykkeleder" />
                     <asp:SessionParameter DefaultValue="x" Name="divingleader_student" SessionField="Dykkeleder" />

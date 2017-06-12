@@ -937,7 +937,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="DAL\DivingJournalContext.cs" />
     <Compile Include="DAL\DivingJournalInitializer.cs" />
-    <Compile Include="HelpMethods.cs" />
     <Compile Include="Migrations\201706122330582_initialMigration.cs" />
     <Compile Include="Migrations\201706122330582_initialMigration.Designer.cs">
       <DependentUpon>201706122330582_initialMigration.cs</DependentUpon>
