@@ -9,10 +9,9 @@ using System.Net;
 using Divingjournal2.DAL;
 using DiverLibrary;
 
-
 namespace Divingjournal2
 {
-    public partial class New_Journal_Rebuilt : System.Web.UI.Page
+    public partial class Write_Journal : System.Web.UI.Page
     {
         List<Watch> watchList = new List<Watch>();
 
@@ -155,9 +154,9 @@ namespace Divingjournal2
         }
 
         private void WriteToDatabase()
-            {
-                DivingJournalContext db = new DivingJournalContext();
-                j.username = HttpContext.Current.Session["Username"].ToString();
+        {
+            DivingJournalContext db = new DivingJournalContext();
+            j.username = HttpContext.Current.Session["Username"].ToString();
 
             if (PressureChamberDiveButton.Enabled)
             {
@@ -192,7 +191,7 @@ namespace Divingjournal2
                 //må legge til changelog
                 db.Journals.Add(j);
                 db.SaveChanges();
-                
+
                 if (j.journalType == Models.JournalType.direct)
                 {
                     var diver1 = new Models.Diver_Standard
@@ -457,10 +456,11 @@ namespace Divingjournal2
                     db.Diver_Compressions.Add(diver3);
                 }
                 db.SaveChanges();
-            } else //if pressurechamberButton is disabled = pressurechamber dive
+            }
+            else //if pressurechamberButton is disabled = pressurechamber dive
             {
                 //Map journal_pressurechamber
-                
+
                 pc.date = DateTextBox.Text;
                 pc.location = LocationTextBox.Text;
                 pc.purpose = PurposeTextBox.Text;
@@ -493,7 +493,7 @@ namespace Divingjournal2
                 db.Journal_Pressurechambers.Add(pc);
                 db.SaveChanges();
             }
-            } 
+        }
 
         private void WriteToLocalDatabase()
         {
@@ -785,7 +785,7 @@ namespace Divingjournal2
                         time12_0m = D3time12_0m.Text,
                         reached15mInChamber = D3reached15mInChamber.Text,
                         surfaceInterval = D3surfaceInterval.Text,
-                        left15mInChamber=D3left15mInChamber.Text,
+                        left15mInChamber = D3left15mInChamber.Text,
                         reached12mInChamber = D3reached12mInChamber.Text,
                         o2_1 = D3o2_1.Text,
                         o2_2 = D3o2_2.Text,
@@ -926,7 +926,7 @@ namespace Divingjournal2
         {
             return dropdown.SelectedValue;
         }
-       
+
         //Help method for finding textbox by ID. Used in TimeButton_Click()
         private Control FindControlRecursive(Control rootControl, string controlID)
         {
@@ -960,17 +960,18 @@ namespace Divingjournal2
             {
                 TextBox textbox = (TextBox)FindControlRecursive(Page, button.CommandArgument);
                 textbox.Text = DateTime.Now.ToShortTimeString();
-            } 
+            }
 
             //Iterate through all watches
-            for (int i = 0; i < watchList.Count; i++) { 
-                
-            //if matches one watch's stopbutton: that watch.calculateTime()
-            if (watchList[i].stopButton == button)
+            for (int i = 0; i < watchList.Count; i++)
             {
+
+                //if matches one watch's stopbutton: that watch.calculateTime()
+                if (watchList[i].stopButton == button)
+                {
                     if (watchList[i].startTextBox.Text != null && watchList[i].startTextBox.Text != "")
-                    watchList[i].calculateTime();
-            }
+                        watchList[i].calculateTime();
+                }
             }
         }
 
@@ -1052,7 +1053,7 @@ namespace Divingjournal2
         }
     }
 
-    public class Watch2
+    public class Watch
     {
         public DateTime startTime { get; set; }
         public DateTime stopTime { get; set; }
@@ -1064,14 +1065,14 @@ namespace Divingjournal2
         public TextBox resultTextBox2 { get; set; }
         public TextBox resultTextBox3 { get; set; }
 
-        public Watch2(TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox)
+        public Watch(TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox)
         {
             startTextBox = _startTextBox;
             stopTextBox = _stopTextBox;
             resultTextBox = _resultTextBox;
         }
 
-        public Watch2(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox)
+        public Watch(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox)
         {
             stopButton = _stopButton;
             startTextBox = _startTextBox;
@@ -1079,7 +1080,7 @@ namespace Divingjournal2
             resultTextBox = _resultTextBox;
         }
 
-        public Watch2(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2)
+        public Watch(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2)
         {
             stopButton = _stopButton;
             startTextBox = _startTextBox;
@@ -1088,7 +1089,7 @@ namespace Divingjournal2
             resultTextBox2 = _resultTextBox2;
         }
 
-        public Watch2(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2, TextBox _resultTextBox3)
+        public Watch(Button _stopButton, TextBox _startTextBox, TextBox _stopTextBox, TextBox _resultTextBox, TextBox _resultTextBox2, TextBox _resultTextBox3)
         {
             stopButton = _stopButton;
             startTextBox = _startTextBox;

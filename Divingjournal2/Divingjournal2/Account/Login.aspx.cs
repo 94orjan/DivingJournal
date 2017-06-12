@@ -29,7 +29,7 @@ namespace Divingjournal2.Account
             }
             else
             {
-                Response.Write("Password is Not correct");
+                Response.Write("Username or Password is incorrect");
             }
         }
     }
