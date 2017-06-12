@@ -838,6 +838,7 @@
     <Content Include="css\bootstrap.css.map" />
     <Content Include="css\bootstrap.min.css.map" />
     <Content Include="obj\Release\CoreCompileInputs.cache" />
+    <Content Include="Write_Journal.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
@@ -1060,6 +1061,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Write_Journal.aspx.cs">
+      <DependentUpon>Write_Journal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Write_Journal.aspx.designer.cs">
+      <DependentUpon>Write_Journal.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
