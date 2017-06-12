@@ -742,7 +742,7 @@
                             <asp:Button ID="Button78" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot overflaten</div>
+                            <div class="form-control-static text-info">Forlot overflaten (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="D1LeftSurfaceButton" OnClick="TimeButton_Click" CommandArgument="D1LeftSurface" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -768,7 +768,7 @@
                             <asp:Button ID="Button79" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">På bunn</div>
+                            <div class="form-control-static text-info">På bunn (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="D1reachedBottomButton" OnClick="TimeButton_Click" CommandArgument="D1reachedBottom" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -793,7 +793,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot bunn (dybde)</div>
+                            <div class="form-control-static text-info">Forlot bunn (dybde) (m)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">                          
                         </asp:TableCell>
@@ -816,7 +816,7 @@
                             <asp:Button ID="Button80" OnClick="TimeButtonWithExtraFunction_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot bunn (tid)</div>
+                            <div class="form-control-static text-info">Forlot bunn (tid) (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="D1leftBottom_TimeButton" OnClick="TimeButtonWithExtraFunction_Click" CommandArgument="D1leftBottom_Time" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -841,7 +841,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Bunntid</div>
+                            <div class="form-control-static text-info">Bunntid (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">                            
                         </asp:TableCell>
@@ -863,7 +863,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Maks dybde</div>
+                            <div class="form-control-static text-info">Maks dybde (m)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">                            
                         </asp:TableCell>
@@ -885,7 +885,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">ELD</div>
+                            <div class="form-control-static text-info">ELD (m)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -907,7 +907,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tillegg til bunntid</div>
+                            <div class="form-control-static text-info">Tillegg til bunntid (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -929,7 +929,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tabell brukt (meter)</div>
+                            <div class="form-control-static text-info">Tabell brukt (m)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -951,7 +951,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tabell brukt (minutt)</div>
+                            <div class="form-control-static text-info">Tabell brukt (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -974,10 +974,10 @@
                             <asp:Button ID="Button81" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Oppstigning til 1. stopp</div>
+                            <div class="form-control-static text-info">Oppstigning til 1. stopp (min/sek)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
-                            <asp:Button ID="D1ascensionToFirstStopButton" OnClick="TimeButton_Click" CommandArgument="D1ascensionToFirstStop" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
+                            <asp:Button ID="D1ascensionToFirstStopButton" OnClick="TimeButton_Click" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
                         </asp:TableCell>
                         <asp:TableCell Width="15%">
                              <asp:TextBox runat="server" CssClass="form-group form-control" ID="D1ascensionToFirstStop"></asp:TextBox>
@@ -1000,7 +1000,7 @@
                             <asp:Button ID="Button82" OnClick="TimeButtonWithExtraFunction_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tid på sikkerhetsstopp</div>
+                            <div class="form-control-static text-info">Tid på sikkerhetsstopp (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="D1timeAtSafetyStopBtn" OnClick="TimeButtonWithExtraFunction_Click" CommandArgument="D1timeAtSafetyStop" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1029,7 +1029,7 @@
                             <asp:Button ID="Button83" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Ankom 9m</div>
+                            <div class="form-control-static text-info">Ankom 9m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button12" OnClick="TimeButton_Click" CommandArgument="D1arrived9m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1055,7 +1055,7 @@
                             <asp:Button ID="Button84" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 9m</div>
+                            <div class="form-control-static text-info">Forlot 9m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button15" OnClick="TimeButton_Click" CommandArgument="D1left9m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1081,7 +1081,7 @@
                             <asp:Button ID="Button85" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Ankom 6m</div>
+                            <div class="form-control-static text-info">Ankom 6m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button18" OnClick="TimeButton_Click" CommandArgument="D1arrived6m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1107,7 +1107,7 @@
                             <asp:Button ID="Button86" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 6m</div>
+                            <div class="form-control-static text-info">Forlot 6m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button21" OnClick="TimeButton_Click" CommandArgument="D1left6m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1133,7 +1133,7 @@
                             <asp:Button ID="Button87" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Ankom 3m</div>
+                            <div class="form-control-static text-info">Ankom 3m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button24" OnClick="TimeButton_Click" CommandArgument="D1arrived3m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1159,7 +1159,7 @@
                             <asp:Button ID="Button88" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 3m</div>
+                            <div class="form-control-static text-info">Forlot 3m (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button27" OnClick="TimeButton_Click" CommandArgument="D1left3m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1188,7 +1188,7 @@
                             <asp:Button ID="Button89" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 18m stopp</div>
+                            <div class="form-control-static text-info">Forlot 18m stopp (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button33" OnClick="TimeButton_Click" CommandArgument="D1left18m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1214,7 +1214,7 @@
                             <asp:Button ID="Button90" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 15m stopp</div>
+                            <div class="form-control-static text-info">Forlot 15m stopp (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button36" OnClick="TimeButton_Click" CommandArgument="D1left15m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1240,7 +1240,7 @@
                             <asp:Button ID="Button91" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 12m stopp</div>
+                            <div class="form-control-static text-info">Forlot 12m stopp (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button39" OnClick="TimeButton_Click" CommandArgument="D1left12m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1266,7 +1266,7 @@
                             <asp:Button ID="Button92" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tid 12-0m</div>
+                            <div class="form-control-static text-info">Tid 12-0m (sek)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button42" OnClick="TimeButton_Click" CommandArgument="D1time12_0m" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1313,7 +1313,7 @@
                             <asp:Button ID="Button93" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Ankom 15m i kammer</div>
+                            <div class="form-control-static text-info">Ankom 15m i kammer (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button45" OnClick="TimeButton_Click" CommandArgument="D1reached15mInChamber" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1339,7 +1339,7 @@
                             <asp:Button ID="Button94" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Overflateintervall</div>
+                            <div class="form-control-static text-info">Overflateintervall (min/sek)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button48" OnClick="TimeButton_Click" CommandArgument="D1surfaceInterval" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1365,7 +1365,7 @@
                             <asp:Button ID="Button95" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Forlot 15m i kammer</div>
+                            <div class="form-control-static text-info">Forlot 15m i kammer (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button51" OnClick="TimeButton_Click" CommandArgument="D1left15mInChamber" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1391,7 +1391,7 @@
                             <asp:Button ID="Button96" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Ankom 12m i kammer</div>
+                            <div class="form-control-static text-info">Ankom 12m i kammer (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button54" OnClick="TimeButton_Click" CommandArgument="D1reached12mInChamber" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1417,7 +1417,7 @@
                             <asp:Button ID="Button97" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">O2 - 1</div>
+                            <div class="form-control-static text-info">O2 - 1 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button57" OnClick="TimeButton_Click" CommandArgument="D1o2_1" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1443,7 +1443,7 @@
                             <asp:Button ID="Button98" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Luft - 1</div>
+                            <div class="form-control-static text-info">Luft - 1 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button60" OnClick="TimeButton_Click" CommandArgument="D1air_1" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1469,7 +1469,7 @@
                             <asp:Button ID="Button99" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">O2 - 2</div>
+                            <div class="form-control-static text-info">O2 - 2 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button63" OnClick="TimeButton_Click" CommandArgument="D1o2_2" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1495,7 +1495,7 @@
                             <asp:Button ID="Button100" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Luft - 2</div>
+                            <div class="form-control-static text-info">Luft - 2 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button66" OnClick="TimeButton_Click" CommandArgument="D1air_2" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1521,7 +1521,7 @@
                             <asp:Button ID="Button101" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">O2 - 3</div>
+                            <div class="form-control-static text-info">O2 - 3 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button69" OnClick="TimeButton_Click" CommandArgument="D1o2_3" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1547,7 +1547,7 @@
                             <asp:Button ID="Button102" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Luft - 3</div>
+                            <div class="form-control-static text-info">Luft - 3 (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button72" OnClick="TimeButton_Click" CommandArgument="D1air_3" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1573,7 +1573,7 @@
                             <asp:Button ID="Button103" OnClick="TimeButton_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Start oppstigning til overflaten</div>
+                            <div class="form-control-static text-info">Start oppstigning til overflaten (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="Button75" OnClick="TimeButton_Click" CommandArgument="D1left12mWithoutO2" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1602,7 +1602,7 @@
                             <asp:Button ID="Button104" OnClick="TimeButtonWithExtraFunction_Click" runat="server" CssClass=" btn-primary form-control" Text="Sett inn alle" />
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">På overflaten</div>
+                            <div class="form-control-static text-info">På overflaten (kl)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                             <asp:Button ID="D1reachedSurfaceBtn" OnClick="TimeButtonWithExtraFunction_Click" CommandArgument="D1reachedSurface" runat="server" CssClass="btn-default form-control" Text="Sett inn" />
@@ -1629,7 +1629,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Oppstigningstid</div>
+                            <div class="form-control-static text-info">Oppstigningstid (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -1653,7 +1653,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tid i kammer</div>
+                            <div class="form-control-static text-info">Tid i kammer (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -1675,7 +1675,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Tid i sjø</div>
+                            <div class="form-control-static text-info">Tid i sjø (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -1697,7 +1697,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Total dekompresjon</div>
+                            <div class="form-control-static text-info">Total dekompresjon (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
@@ -1722,7 +1722,7 @@
                         <asp:TableCell Width="4%">
                         </asp:TableCell>
                         <asp:TableCell Width="30%">
-                            <div class="form-control-static text-info">Total dykketid</div>
+                            <div class="form-control-static text-info">Total dykketid (min)</div>
                         </asp:TableCell>
                         <asp:TableCell Width="5%">
                         </asp:TableCell>
