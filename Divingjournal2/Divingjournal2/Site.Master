@@ -56,8 +56,8 @@
                     </ul>   
                     
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a><asp:Label ID="Label_User" runat="server" style="color:white" ></asp:Label></a></li>
-                        <!-- <li><a class="button" type="button" ID="B_Logout" runat="server" href="~/Account/Login">Logg ut</a></li> -->
+                        <li><a><asp:Label ID="Label_User" runat="server" style="color:white" Text="Du er logget inn som "></asp:Label></a></li>
+                        
                         <li><a><asp:Button ID="Button1" runat="server" OnClick="B_Logout_Click" Text="Logg ut" /></a></li>
                     </ul>                     
                 </div>

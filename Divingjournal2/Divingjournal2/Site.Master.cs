@@ -73,7 +73,7 @@ namespace Divingjournal2
         {
             if (Session["Username"] != null)
             {
-                Label_User.Text = "Du er nå logget inn som " + Session["Username"].ToString();
+                Label_User.Text = "Du er logget inn som " + Session["Username"].ToString();
             }
             else
             {
@@ -91,8 +91,9 @@ namespace Divingjournal2
                     Response.Redirect("~/Account/Login.aspx");
                     break;
                 case DialogResult.No:
-                    // Do nothing   
+                    
                     break;
+
             }
         }
 
