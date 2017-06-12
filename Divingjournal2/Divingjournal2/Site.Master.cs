@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using System.Windows.Forms;
+using System.Web.UI.HtmlControls;
 
 namespace Divingjournal2
 {
@@ -80,7 +81,8 @@ namespace Divingjournal2
             }
         }
 
-        protected void B_Logout_Click(object sender, FormClosingEventArgs e)
+        // Warning when loging off
+        public void B_Logout_Click(object sender, FormClosingEventArgs e)
         {
             switch (MessageBox.Show("Alle ulagrede dokumenter vil gå tapt", "Logger ut", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {

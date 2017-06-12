@@ -5,9 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <style type="text/css">
+    <style type="text/css" >
         .auto-style1 {
-            font-size: medium;
+            font-size: large;
         }
         .auto-style2 {
             font-size: x-large;
@@ -16,16 +16,16 @@
         .auto-style3 {
             text-align: center;
         }
-        .auto-style4 {
-            width: 100%;
+        table {
+          margin-left: auto;
+          margin-right: auto;
+          font-size: large;
         }
-        .auto-style5 {
-            width: 238px;
+        .wrapper {
+            display: table-cell;
+            vertical-align: middle;
         }
-        .auto-style6 {
-            width: 238px;
-            text-align: right;
-        }
+        
     </style>
 </head>
 <body>
@@ -35,12 +35,12 @@
         <h1 class="auto-style3" style="height: 34px"><strong><span class="auto-style2">Logg inn her</span><br />
             </strong></h1>
         </div>
-        <div class="auto-style3">
-            <table class="auto-style4">
+        <div class="auto-style3" >
+            <table class="auto-style4" >
                 <tr>
                     <td class="auto-style6">UserName</td>
                     <td style="text-align: left">
-                        <asp:TextBox ID="TextBoxUserName" runat="server" style="text-align: right" Width="180px"></asp:TextBox>
+                        <asp:TextBox ID="TextBoxUserName" runat="server" style="text-align: left" Width="180px"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="UserNameError" runat="server" ControlToValidate="TextBoxUserName" ErrorMessage="Please enter Username" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td>&nbsp;</td>
