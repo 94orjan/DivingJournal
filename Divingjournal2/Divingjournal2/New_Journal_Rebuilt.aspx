@@ -1,4 +1,4 @@
-﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="New_Journal_Rebuilt.aspx.cs" Inherits="Divingjournal2.New_Journal_Rebuilt" %>
+﻿<%@ Page  Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="True" CodeBehind="New_Journal_Rebuilt.aspx.cs" Inherits="Divingjournal2.New_Journal_Rebuilt" %>
 
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>

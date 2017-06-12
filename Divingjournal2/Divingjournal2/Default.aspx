@@ -13,7 +13,7 @@
         <div class="btn-block col-md-12">
             <asp:Button ID="NewJournalButton" runat="server" Text="Opprett journal" OnClick="NewJournalButton_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large" />
             <asp:Button ID="GetJournalButton" runat="server" Text="Mine journaler" OnClick="GetJournalButton_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large"/>
-            <asp:Button ID="SearchJournalsButton" runat="server" Text="Søk etter journal" OnClick="Button2_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large"/>      
+            <asp:Button ID="SearchJournalsButton" runat="server" Text="Søk etter journal" OnClick="SearchJournalsButton_Click" CssClass="btn-primary btn" Width="33%" Font-Size="XX-Large"/>      
          </div>
     </div>
 

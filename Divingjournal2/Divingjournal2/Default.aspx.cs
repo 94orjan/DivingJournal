@@ -32,7 +32,7 @@ namespace Divingjournal2
 
         protected void SearchJournalsButton_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("/search_journal.aspx");
         }
 
         protected void NewJournalOldButton_Click(object sender, EventArgs e)

@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="Id,Id1" DataSourceID="QueryResult">
+                <EmptyDataTemplate><h1>Ingen resultat...</h1></EmptyDataTemplate>
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
                     <asp:BoundField DataField="subject" HeaderText="subject" SortExpression="subject" />
@@ -82,11 +83,15 @@
                     <asp:BoundField DataField="diver_name" HeaderText="diver_name" SortExpression="diver_name" />
                 </Columns>
             </asp:GridView>
-            <asp:SqlDataSource ID="QueryResult" runat="server" ConnectionString="<%$ ConnectionStrings:DivingJournalContext %>" SelectCommand="SELECT Journal.*, Diver_Standard.* FROM Journal INNER JOIN Diver_Standard ON Journal.Id = Diver_Standard.JournalID WHERE ([diver_2] = @diver_2) OR ([diver_1] = @diver_1) OR ([date] = @date);">
+            <asp:SqlDataSource ID="QueryResult" runat="server" ConnectionString="<%$ ConnectionStrings:DivingJournalContext %>" SelectCommand="SELECT Journal.*, Diver_Standard.* FROM Journal INNER JOIN Diver_Standard ON Journal.Id = Diver_Standard.JournalID WHERE ([diver_2] = @diver_2) OR ([diver_1] = @diver_1)  OR ([standby] = @standby) OR ([date] = @date) OR ([divingleader_teacher] = @divingleader_teacher) OR ([divingleader_student] = @divingleader_student) OR ([courseNumber] = @courseNumber);">
                 <SelectParameters>
-                    <asp:SessionParameter Name="diver_2" SessionField="Dykker" />
-                    <asp:SessionParameter Name="diver_1" SessionField="Dykker" />
-                    <asp:SessionParameter Name="date" SessionField="Dato" />
+                    <asp:SessionParameter Name="diver_2" SessionField="Dykker" DefaultValue="x" />
+                    <asp:SessionParameter Name="diver_1" SessionField="Dykker" DefaultValue="x" />
+                    <asp:SessionParameter DefaultValue="x" Name="standby" SessionField="Dykker" />
+                    <asp:SessionParameter Name="date" SessionField="Dato" DefaultValue="x" />
+                    <asp:SessionParameter DefaultValue="x" Name="divingleader_teacher" SessionField="Dykkeleder" />
+                    <asp:SessionParameter DefaultValue="x" Name="divingleader_student" SessionField="Dykkeleder" />
+                    <asp:SessionParameter DefaultValue="x" Name="courseNumber" SessionField="Kursnr" />
                 </SelectParameters>
             </asp:SqlDataSource>
         </div>

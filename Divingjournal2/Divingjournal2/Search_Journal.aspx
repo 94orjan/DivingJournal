@@ -9,7 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
-        &nbsp;<br />
+        &nbsp;
+           <h1>Søk bare på en parameter om gangen</h1>
+            <br />
             <br />
             Dykker:
             <asp:TextBox ID="Dykker_textbox" runat="server"></asp:TextBox>

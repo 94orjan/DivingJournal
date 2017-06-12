@@ -9,6 +9,7 @@ using System.Net;
 using Divingjournal2.DAL;
 using DiverLibrary;
 
+
 namespace Divingjournal2
 {
     public partial class New_Journal_Rebuilt : System.Web.UI.Page
