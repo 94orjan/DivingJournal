@@ -1042,7 +1042,7 @@ namespace Divingjournal2
 
         protected void SaveToDatabaseButton_Click(object sender, EventArgs e)
         {
-
+            WriteToDatabase();
         }
     }
 
